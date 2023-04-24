@@ -12,12 +12,14 @@ ENCODING = 'utf-8'
 array_of_img = [] # this if for store all of the image data
 # this function is for read image,the input is directory name
 def img2json(imgdir,jsondir):
+    i = 0
     for filename in os.listdir(r"./"+imgdir):
         #print(filename) #just for test
 
         #read image data from imgdir
         IMAGE_NAME = imgdir + "/" + filename
-        JSON_NAME = (jsondir + "/" + filename).replace('jpg','json')
+        JSON_NAME = jsondir + "/" + str(i).zfill(4)+".json"
+        i += 1
         print(IMAGE_NAME,JSON_NAME)
 
         # read img
@@ -63,8 +65,8 @@ def json2img(jsondir,imgdir):
 
 
 if __name__ == "__main__":
-    imgdir = "2000img"
-    jsondir = "2000_split"
+    imgdir = "origin"
+    jsondir = "435_origin"
     img2json(imgdir,jsondir)
 
     # use test dir
